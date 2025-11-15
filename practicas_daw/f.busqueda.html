@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Búsqueda de anuncios - Pisos & Inmuebles</title>
+  <!-- Links-->
+  <link rel="stylesheet" href="../../iconos/fontello-88eddae3/css/fontello.css">
+  <link rel="stylesheet" href="basic.css" title="Modo Claro">
+  <link rel="stylesheet" href="forms.css">
+  <link rel="alternate stylesheet" href="modo-oscuro.css" title="Modo Oscuro">
+  <link rel="stylesheet" href="print.css" media="print">
+  <link rel="alternate stylesheet" href="accesible.css" title="Accesible">
+  <link rel="alternate stylesheet" href="alto-contraste.css" title="Modo Alto Contraste">
+</head>
+
+
+<header>
+  <section>
+    <div class="cabecera">
+      <article class="a_logo">
+        <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+      </article>
+
+      <article class="a_titulo">
+        <h1>Pisos & Inmuebles</h1>
+        <p>La llave de tu nuevo hogar está aquí</p>
+      </article>
+
+      <article class="a_identificarse">
+        <a href="cuenta.html" class="icon-user-outline" title="Cuenta"></a>
+      </article>
+    </div>
+
+  </section>
+</header>
+
+<nav aria-label="Navegación principal">
+  <a href="index.html">Inicio</a>
+  <a href="f.busqueda.html">Búsqueda completa</a>
+</nav>
+
+
+<main class="contenido">
+  <section>
+    <article>
+      <h2>Búsqueda de anuncios</h2>
+
+      <form action="resultado.html" method="get">
+        <fieldset>
+          <legend>Tipo de anuncio</legend>
+          <div class="radio-group">
+            <input type="radio" id="venta" name="tipo" value="venta">
+            <label for="venta">Venta</label>
+
+            <input type="radio" id="alquiler" name="tipo" value="alquiler">
+            <label for="alquiler">Alquiler</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Datos de la vivienda</legend>
+
+          <label for="vivienda">Tipo de vivienda:</label>
+          <select id="vivienda" name="vivienda">
+            <option value="">Seleccione...</option>
+            <option value="obra-nueva">Obra nueva</option>
+            <option value="vivienda">Vivienda</option>
+            <option value="oficina">Oficina</option>
+            <option value="local">Local</option>
+            <option value="garaje">Garaje</option>
+          </select>
+
+          <label for="ciudad">Ciudad:</label>
+          <input type="text" id="ciudad" name="ciudad" />
+
+          <label for="pais">País:</label>
+          <select id="pais" name="pais">
+            <option value="">Seleccione un país</option>
+            <option value="espana">España</option>
+            <option value="francia">Francia</option>
+            <option value="italia">Italia</option>
+            <option value="alemania">Alemania</option>
+            <option value="portugal">Portugal</option>
+            <option value="mexico">México</option>
+            <option value="argentina">Argentina</option>
+            <option value="chile">Chile</option>
+            <option value="colombia">Colombia</option>
+            <option value="peru">Perú</option>
+          </select>
+
+          <label>Precio:
+            <input type="range" name="precio" min="50" max="2000">
+          </label>
+
+          <label>Fecha:
+            <input type="text" name="fecha" placeholder="mm/aaaa" pattern="(0[1-9]|1[0-2])\/[0-9]{4}"
+              title="Formato válido: mm/aaaa">
+          </label>
+        </fieldset>
+
+        <input class="button" type="submit" value="Buscar" formaction="resultado.html" />
+      </form>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <p>Lucía Vidal Ortiz &amp; Miriam Mendiola Soriano</p>
+  <p>&copy; 2025 Pisos & Inmuebles</p>
+</footer>
+
+</body>
+
+</html>

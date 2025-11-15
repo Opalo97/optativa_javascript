@@ -1,0 +1,502 @@
+/* ==========================================
+   ALTO CONTRASTE FINAL
+   ========================================== */
+
+html {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* === HEADER CORREGIDO === */
+header {
+    background-color: inherit;
+    width: 100%;
+}
+
+header section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 16px;
+}
+
+/* Contenedor principal */
+.cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* separa logo / título / icono */
+    flex-wrap: wrap;
+    gap: 20px;
+    /* espacio fijo entre elementos */
+}
+
+/* Logo */
+.a_logo img {
+    width: 55px;
+    /* tamaño igual al claro */
+    height: 55px;
+    display: block;
+}
+
+/* Título y subtítulo */
+.a_titulo {
+    flex: 1 1 auto;
+    /* ocupa espacio flexible */
+    text-align: center;
+    /* centrado visual */
+}
+
+.a_titulo h1 {
+    margin: 0;
+    font-size: x-large;
+    line-height: 1.1;
+}
+
+.a_titulo p {
+    margin: 4px 0 0;
+    font-size: medium;
+}
+
+/* Área de identificación */
+.a_identificarse {
+    display: flex;
+    gap: 10px;
+    /* separación entre iconos o botones */
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Botones redondos */
+.a_identificarse a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+    border-radius: 50%;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 700px) {
+    .cabecera {
+        justify-content: center;
+        /* centra todo */
+        text-align: center;
+    }
+
+    .a_titulo {
+        flex: 1 1 100%;
+    }
+}
+
+
+/* LOGIN / SIGN UP */
+.a_identificarse {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.a_identificarse a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+    border-radius: 50%;
+    background-color: #000;
+    color: #ffff00;
+    border: 2px solid #000;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.a_identificarse a:hover {
+    background-color: #ffff00;
+    color: #000;
+}
+
+/* NAV */
+nav {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 12px;
+}
+
+nav a {
+    color: #ffff00;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+nav a:hover {
+    background-color: #333;
+}
+
+/* CONTENIDO */
+main.contenido {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: #fff;
+    border: 3px solid #000;
+    border-radius: 10px;
+    color: #000;
+}
+
+/* TITULOS */
+main.contenido h2 {
+    text-align: center;
+    color: #000;
+    background-color: #ffff00;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+main.contenido h3 {
+    color: #000;
+    border-left: 5px solid #000;
+    padding-left: 8px;
+    background-color: #fffd8f;
+}
+
+/* FORMULARIOS */
+main.contenido input,
+main.contenido select,
+main.contenido textarea {
+    background-color: #fff;
+    color: #000;
+    border: 3px solid #000;
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+main.contenido input:focus,
+main.contenido select:focus,
+main.contenido textarea:focus {
+    outline: 3px solid #ff0000;
+}
+
+/* BOTONES */
+main.contenido button,
+.button,
+.btn-subir {
+    background-color: #000;
+    color: #ffff00;
+    border: 3px solid #000;
+    border-radius: 50px;
+    padding: 10px 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+main.contenido button:hover,
+.button:hover,
+.btn-subir:hover {
+    background-color: #ffff00;
+    color: #000;
+}
+
+/* ENLACES */
+a.enlaces {
+    display: inline-block;
+    background-color: #000;
+    color: #ffff00;
+    border: 2px solid #000;
+    border-radius: 500px;
+    padding: 8px 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a.enlaces:hover {
+    background-color: #ffff00;
+    color: #000;
+}
+
+/* LISTAS */
+main.contenido .lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px 0;
+    max-width: 600px;
+}
+
+main.contenido .lista li {
+    margin: 10px 0;
+}
+
+main.contenido .lista li a {
+    display: block;
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background-color: #ffff00;
+    border: 2px solid #000;
+    color: #000;
+    font-weight: 700;
+}
+
+main.contenido .lista li a:hover {
+    background-color: #000;
+    color: #ffff00;
+}
+
+/* FIELDSET */
+fieldset {
+    border: 3px solid #000;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 20px 0;
+    background-color: #fffd8f;
+}
+
+legend {
+    padding: 0 10px;
+    font-weight: 700;
+    margin-left: 12px;
+    color: #000;
+    background-color: #ffff00;
+    border-radius: 4px;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 12px;
+    margin: 0;
+}
+
+dt {
+    font-weight: 700;
+    color: #000;
+}
+
+dd {
+    margin: 0;
+    color: #000;
+}
+
+/* FOOTER */
+footer {
+    background-color: #ffff00;
+    color: #000;
+    text-align: center;
+    padding: 20px 16px;
+    border-top: 3px solid #000;
+}
+
+
+/* ESPACIADO */
+main.contenido section {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #000;
+}
+
+main.contenido article {
+    margin-bottom: 28px;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
+
+/* IMÁGENES: asegurar visibilidad y contraste */
+.imagen_principal {
+    border-radius: 20px;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    background-color: #111;
+    /* marco para que no se fundan con fondo */
+    border: 1px solid #333;
+}
+
+.imagen_principal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    filter: none;
+    /* quitar inversión/oscurecimiento */
+    opacity: 1;
+    display: block;
+}
+
+/* contenedor de imágenes en general */
+.imagenes {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+/* imagenes secundarias */
+.imagen_secundaria {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 150px;
+    height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #111;
+    border: 1px solid #333;
+}
+
+.imagen_secundaria img {
+    padding: 2px;
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 20px;
+    filter: none;
+}
+
+/* === TABLA "TARIFAS" — ALTO CONTRASTE (CORREGIDA Y CENTRADA) === */
+section[aria-labelledby="tarifas"] {
+    background-color: #ffffff;
+    color: #000000;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 20px auto;
+    /* centrada horizontalmente */
+    box-sizing: border-box;
+    max-width: 900px;
+    /* límite de anchura */
+    text-align: center;
+    /* centra el título */
+}
+
+/* Título */
+section[aria-labelledby="tarifas"] h3 {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #000;
+    background-color: #ffff00;
+    padding: 6px 0;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    border-radius: 6px;
+    border: 2px solid #000;
+}
+
+/* Tabla base */
+section[aria-labelledby="tarifas"] table {
+    width: 100%;
+    margin: 0 auto;
+    /* centra la tabla dentro del section */
+    border-collapse: collapse;
+    font-size: 1rem;
+    border: 2px solid #000;
+    background-color: #fff;
+}
+
+/* Cabecera */
+section[aria-labelledby="tarifas"] thead th {
+    background-color: #000;
+    color: #ffff00;
+    font-weight: 700;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border: 2px solid #000;
+}
+
+/* Celdas */
+section[aria-labelledby="tarifas"] td {
+    padding: 0.8rem 1rem;
+    border: 2px solid #000;
+    color: #000;
+    background-color: #fff;
+    text-align: left;
+}
+
+/* Filas alternas */
+section[aria-labelledby="tarifas"] tbody tr:nth-child(even) {
+    background-color: #fffd8f;
+}
+
+/* Hover (resalte de fila) */
+section[aria-labelledby="tarifas"] tbody tr:hover {
+    background-color: #ffff00;
+}
+
+/* Enlaces dentro de la tabla */
+section[aria-labelledby="tarifas"] a {
+    color: #0000ee;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+section[aria-labelledby="tarifas"] a:hover,
+section[aria-labelledby="tarifas"] a:focus {
+    color: #ff0000;
+    background-color: #ffff00;
+    outline: 2px solid #000;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+    section[aria-labelledby="tarifas"] {
+        padding: 12px;
+    }
+
+    section[aria-labelledby="tarifas"] table,
+    section[aria-labelledby="tarifas"] thead,
+    section[aria-labelledby="tarifas"] tbody,
+    section[aria-labelledby="tarifas"] th,
+    section[aria-labelledby="tarifas"] td,
+    section[aria-labelledby="tarifas"] tr {
+        display: block;
+        width: 100%;
+    }
+
+    section[aria-labelledby="tarifas"] thead {
+        display: none;
+    }
+
+    section[aria-labelledby="tarifas"] td {
+        border: 2px solid #000;
+        position: relative;
+        padding-left: 45%;
+        text-align: left;
+    }
+
+    section[aria-labelledby="tarifas"] td::before {
+        position: absolute;
+        left: 10px;
+        width: 40%;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #000;
+        content: attr(data-label);
+    }
+}
+
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+    dl {
+        grid-template-columns: 1fr;
+    }
+}

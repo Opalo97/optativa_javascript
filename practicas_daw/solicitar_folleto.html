@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solicitar folleto - Pisos & Inmuebles</title>
+  <!-- Links-->
+  <link rel="stylesheet" href="../../iconos/fontello-88eddae3/css/fontello.css">
+  <link rel="stylesheet" href="basic.css" title="Modo Claro">
+  <link rel="stylesheet" href="forms.css">
+  <link rel="alternate stylesheet" href="modo-oscuro.css" title="Modo Oscuro">
+  <link rel="stylesheet" href="print.css" media="print">
+  <link rel="alternate stylesheet" href="accesible.css" title="Accesible">
+  <link rel="alternate stylesheet" href="alto-contraste.css" title="Modo Alto Contraste">
+</head>
+
+<body>
+
+  <header>
+    <section>
+      <div class="cabecera">
+        <article class="a_logo">
+          <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+        </article>
+
+        <article class="a_titulo">
+          <h1>Pisos & Inmuebles</h1>
+          <p>La llave de tu nuevo hogar está aquí</p>
+        </article>
+
+        <article class="a_identificarse">
+          <a href="cuenta.html" class="icon-user-outline" title="Cuenta"></a>
+        </article>
+      </div>
+
+    </section>
+  </header>
+
+  <nav aria-label="Navegación principal">
+    <a href="index.html">Inicio</a>
+    <a href="f.busqueda.html">Búsqueda completa</a>
+  </nav>
+  
+
+  <main class="contenido">
+    <section aria-labelledby="intro">
+      <h2 id="intro">Solicitar folleto publicitario impreso</h2>
+      <p>
+        A través de este formulario puedes solicitar el envío postal de un folleto publicitario impreso
+        basado en uno de tus anuncios. Completa los datos de contacto y envío, elige las opciones de
+        impresión y confirma la selección del anuncio. El coste de procesamiento y envío es fijo e
+        independiente del número de páginas o de copias.
+      </p>
+    </section>
+
+    <section aria-labelledby="tarifas">
+      <h3 id="tarifas">Tarifas</h3>
+      <!-- Tabla EXACTA del prototipo -->
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Concepto</th>
+            <th scope="col">Tarifa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Coste procesamiento y envío</td>
+            <td>10 €</td>
+          </tr>
+          <tr>
+            <td>&lt; 5 páginas</td>
+            <td>2 € por pág.</td>
+          </tr>
+          <tr>
+            <td>entre 5 y 10 páginas</td>
+            <td>1.8 € por pág.</td>
+          </tr>
+          <tr>
+            <td>&gt; 10 páginas</td>
+            <td>1.6 € por pág.</td>
+          </tr>
+          <tr>
+            <td>Blanco y negro</td>
+            <td>0 €</td>
+          </tr>
+          <tr>
+            <td>Color</td>
+            <td>0.5 € por foto</td>
+          </tr>
+          <tr>
+            <td>Resolución &lt;= 300 dpi</td>
+            <td>0 € por foto</td>
+          </tr>
+          <tr>
+            <td>Resolución &gt; 300 dpi</td>
+            <td>0.2 € por foto</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-labelledby="formulario">
+      <h3 id="formulario">Formulario de solicitud</h3>
+
+      <form action="respuesta_folleto.html" method="post">
+        <!-- Datos de contacto -->
+        <fieldset>
+          <legend>Datos de contacto</legend>
+
+          <article>
+            <label for="nombre">Nombre y apellidos (máx. 200) *</label><br />
+            <input id="nombre" name="nombre" type="text" maxlength="200" required placeholder="Nombre" />
+          </article>
+
+          <article>
+            <label for="email">Correo electrónico (máx. 200) *</label><br />
+            <input id="email" name="email" type="email" maxlength="200" required placeholder="Tu correo" />
+          </article>
+
+          <article>
+            <label for="telefono">Teléfono (opcional)</label><br />
+            <input id="telefono" name="telefono" type="tel" inputmode="tel" placeholder="### ## ## ##" />
+          </article>
+
+          <article>
+            <label for="textoAdicional">Texto adicional (máx. 4000, opcional)</label><br />
+            <textarea id="textoAdicional" name="textoAdicional" maxlength="4000" rows="6" placeholder="..."></textarea>
+          </article>
+        </fieldset>
+
+        <!-- Dirección postal -->
+        <fieldset>
+          <legend>Dirección de envío</legend>
+
+
+          <label for="dir_calle">Dirección</label>
+          &nbsp;
+
+          <!-- Calle -->
+          <input id="dir_calle" name="calle" type="text" required placeholder="Calle" size="26" maxlength="200">
+
+          <!-- Número -->
+          &nbsp;
+          <input id="dir_numero" name="numero" type="text" required placeholder="Número" size="6" maxlength="10">
+
+          <!-- Código Postal -->
+          &nbsp;
+          <input id="dir_cp" name="cp" type="text" required placeholder="CP" size="6" maxlength="10">
+
+          <!-- Localidad -->
+          &nbsp;
+          <input id="dir_localidad" name="text" type="text" required placeholder="Localidad" size="6" maxlength="10">
+
+          <!-- Provincia -->
+          &nbsp;
+          <input id="dir_provincia" name="text" type="text" required placeholder="Provincia" size="6" maxlength="10">
+          &nbsp;(*)
+
+        </fieldset>
+
+
+        <!-- Opciones de impresión -->
+        <fieldset>
+          <legend>Opciones de impresión</legend>
+
+          <article>
+            <label for="colorPortada">Color de la portada (por defecto negro)</label><br />
+            <input id="colorPortada" name="colorPortada" type="color" value="#000000" />
+          </article>
+
+          <article>
+            <label for="copias">Número de copias (1–99)</label><br />
+            <input id="copias" name="copias" type="number" min="1" max="99" value="1" />
+          </article>
+
+          <article>
+            <label for="resolucion">Resolución de las fotos (150–900 DPI)</label><br>
+            <input id="resolucion" name="resolucion" type="number" min="150" max="900" step="150" value="150"
+              inputmode="numeric" placeholder="150">
+            DPI
+          </article>
+
+          <article>
+            <p>Impresión a color *</p>
+            <input type="radio" id="bn" name="impresionColor" value="bn" required />
+            <label for="bn">Blanco y negro</label>
+            <input type="radio" id="color" name="impresionColor" value="color" />
+            <label for="color">Color</label>
+          </article>
+
+          <article>
+            <p>Impresión del precio *</p>
+            <input type="radio" id="precioSi" name="imprimirPrecio" value="si" required />
+            <label for="precioSi">Con precio</label>
+            <input type="radio" id="precioNo" name="imprimirPrecio" value="no" />
+            <label for="precioNo">Sin precio</label>
+          </article>
+        </fieldset>
+
+        <!-- Selección de anuncio -->
+        <fieldset>
+          <legend>Anuncio del usuario (obligatorio)</legend>
+          <p>Selecciona el anuncio propio en el que se basará el folleto publicitario impreso.</p>
+          <label for="anuncioUsuario">Anuncio *</label><br />
+          <select id="anuncioUsuario" name="anuncioUsuario" required>
+            <option value="" selected>— Selecciona tu anuncio —</option>
+            <option value="anuncio-1">Piso céntrico 2 hab. Madrid</option>
+            <option value="anuncio-2">Ático con terraza en París</option>
+            <option value="anuncio-3">Estudio reformado en Alicante</option>
+          </select>
+        </fieldset>
+
+        <!-- Logística de envío -->
+        <fieldset>
+          <legend>Logística de envío</legend>
+          <label for="fechaRecepcion">Fecha aproximada de recepción (opcional)</label><br />
+          <input id="fechaRecepcion" name="fechaRecepcion" type="date" />
+        </fieldset>
+
+        <!-- Envío -->
+        <section>
+          <article>
+            <button type="submit" class="button">Solicitar folleto</button>
+            <button type="reset" class="button">Limpiar formulario</button>
+
+          </article>
+        </section>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Lucía Vidal Ortiz &amp; Miriam Mendiola Soriano</p>
+    <p>&copy; 2025 Pisos &amp; Inmuebles</p>
+  </footer>
+
+</body>
+
+</html>
