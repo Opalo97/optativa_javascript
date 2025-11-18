@@ -18,7 +18,7 @@
 
 <body>
 
-  <!-- Cabecera reutilizada -->
+
   <header>
     <section>
       <div class="cabecera">
@@ -46,8 +46,28 @@
   
 
   <main class="contenido">
-    <section>
+    <section id="resultados-busqueda">
       <h2>Resultados de la búsqueda</h2>
+
+      <!-- Controles de ordenación -->
+      <div class="barra-orden">
+        <label for="orden-campo">Ordenar por:</label>
+        <select id="orden-campo">
+          <option value="titulo">Título</option>
+          <option value="fecha">Fecha</option>
+          <option value="ciudad">Ciudad</option>
+          <option value="pais">País</option>
+          <option value="precio">Precio</option>
+        </select>
+
+        <label for="orden-direccion" class="visually-hidden">Sentido</label>
+        <select id="orden-direccion">
+          <option value="asc">Ascendente (A→Z / más barato primero)</option>
+          <option value="desc">Descendente (Z→A / más caro primero)</option>
+        </select>
+
+        <button type="button" id="btn-ordenar">Aplicar orden</button>
+      </div>
 
       <!-- ANUNCIO 1 -->
       <fieldset>
@@ -83,7 +103,6 @@
       <fieldset>
         <legend>Apartamento en París</legend>
         <a href="aviso.html">
-
           <div class="imagenes">
             <div class="imagen_principal">
               <img src="img/foto_piso1.jpg" alt="Foto principal del piso">
@@ -109,13 +128,18 @@
           <dd>350.000 €</dd>
         </dl>
       </fieldset>
+
+      
     </section>
   </main>
+
 
   <footer>
     <p>Lucía Vidal Ortiz &amp; Miriam Mendiola Soriano</p>
     <p>&copy; 2025 Pisos & Inmuebles</p>
   </footer>
+  <script src="ordenacion.js"></script>
+
 
 </body>
 

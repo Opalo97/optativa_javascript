@@ -17,7 +17,7 @@
 
 <body>
 
-  <!-- Cabecera idéntica a las demás páginas -->
+
   <header>
     <section>
 
@@ -50,7 +50,7 @@
       <article>
         <h2>Registro de nuevo usuario</h2>
 
-        <form action="index.html" method="post" enctype="multipart/form-data">
+        <form action="index.html" method="post" enctype="multipart/form-data" id="form-registro" novalidate>
           <fieldset>
             <legend>Datos de acceso</legend>
 
@@ -68,14 +68,16 @@
             <legend>Datos personales</legend>
 
             <label for="email">Correo electrónico:</label>
-            <input type="email" id="email" name="email" />
+            <!-- no es type="email" -->
+            <input type="text" id="email" name="email" />
 
-            <p>Sexo:</p>
+            <label>Sexo:</label>
             <label><input type="radio" id="hombre" name="sexo" value="hombre" /> Hombre</label>
             <label><input type="radio" id="mujer" name="sexo" value="mujer" /> Mujer</label>
 
             <label for="fecha">Fecha de nacimiento:</label>
-            <input type="date" id="fecha" name="fecha" />
+            <!-- no es type="date" -->
+            <input type="text" id="fecha" name="fecha" />
 
             <label for="ciudad">Ciudad:</label>
             <input type="text" id="ciudad" name="ciudad" />
@@ -86,27 +88,22 @@
               <option value="espana">España</option>
               <option value="francia">Francia</option>
               <option value="italia">Italia</option>
-              <option value="alemania">Alemania</option>
-              <option value="portugal">Portugal</option>
-              <option value="mexico">México</option>
-              <option value="argentina">Argentina</option>
-              <option value="chile">Chile</option>
-              <option value="colombia">Colombia</option>
-              <option value="peru">Perú</option>
-            </select>
+              </select>
 
             <div class="upload-container">
               <label for="foto" class="btn-subir">Subir foto de perfil</label>
               <input type="file" id="foto" name="foto" class="input-foto" />
               <span class="file-name">foto_piso2.jpg</span>
             </div>
-
           </fieldset>
+
+          <div id="errores" class="errores" aria-live="polite"></div>
 
           <p>
             <input type="submit" value="Registrarse" />
           </p>
         </form>
+
       </article>
     </section>
   </main>
@@ -116,6 +113,8 @@
     <p>Lucía Vidal Ortiz &amp; Miriam Mendiola Soriano</p>
     <p>&copy; 2025 Pisos & Inmuebles</p>
   </footer>
+  <script src="registro.js"></script>
+
 
 </body>
 

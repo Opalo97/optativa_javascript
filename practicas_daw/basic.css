@@ -255,6 +255,127 @@ footer p {
   font-weight: 500;
 }
 
+/* === FORMULARIO DE REGISTRO === */
+
+/* Centrar el formulario y limitar el ancho */
+.contenido form {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Que cada etiqueta/campo ocupe su línea y tenga separación */
+#form-registro fieldset > label,
+#form-registro fieldset > p,
+#form-registro .upload-container {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Inputs y select un poco más cuidados */
+#form-registro input[type="text"],
+#form-registro input[type="password"],
+#form-registro select {
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+/* Radios alineados mejor */
+#form-registro input[type="radio"] {
+  margin-right: 4px;
+}
+
+/* Contenedor de errores */
+#errores {
+  max-width: 700px;
+  margin: 12px auto 0 auto;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background-color: #ffecec;
+  border: 1px solid #e57373;
+  color: #b71c1c;
+  font-size: 0.95rem;
+}
+
+/* Lista de errores dentro del contenedor */
+#errores ul {
+  margin: 0;
+  padding-left: 18px;
+  list-style: disc;
+}
+
+#errores li + li {
+  margin-top: 4px;
+}
+
+/* Botón de envío  */
+#form-registro p {
+  text-align: right;
+  margin-top: 16px;
+}
+
+#form-registro input[type="submit"] {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid #4b2b99;
+  background-color: #a679ff;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#form-registro input[type="submit"]:hover {
+  background-color: #8e5fff;
+}
+
+
+.barra-orden {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.barra-orden label {
+  font-weight: 600;
+}
+
+.barra-orden select,
+.barra-orden button {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.barra-orden button {
+  background-color: #a679ff;
+  border-color: #4b2b99;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.barra-orden button:hover {
+  background-color: #8e5fff;
+}
+
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+
 /* PARA PC*/
 @media (min-width: 1920px) {
   .a_titulo h1 { 
