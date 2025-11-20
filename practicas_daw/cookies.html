@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestión de Cookies - Pisos & Inmuebles</title>
+  <link rel="stylesheet" href="basic.css" title="Modo Claro">
+  <link rel="stylesheet" href="forms.css">
+  <link rel="alternate stylesheet" href="modo-oscuro.css" title="Modo Oscuro">
+  <link rel="stylesheet" href="print.css" media="print">
+</head>
+
+<body>
+
+  <header>
+    <div class="cabecera">
+      <article class="a_logo">
+        <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+      </article>
+      <article class="a_titulo">
+        <h1>Pisos & Inmuebles</h1>
+      </article>
+      <article class="a_identificarse">
+        <a href="login.html" class="btn">Log In</a>
+      </article>
+    </div>
+  </header>
+
+  <nav aria-label="Navegación principal">
+    <a href="index.html">Inicio</a>
+    <a href="f.busqueda.html">Búsqueda completa</a>
+  </nav>
+
+  <main class="contenido">
+    <section>
+      <h2>Cookies del sitio</h2>
+      <p id="info">A continuación se muestra la lista de cookies disponibles en este sitio. Puedes eliminar cookies individualmente o borrarlas todas. También puedes aceptar o rechazar el uso de cookies desde aquí.</p>
+
+      <div style="margin:12px 0;">
+        <button id="btn-accept">Aceptar cookies</button>
+        <button id="btn-reject">Rechazar cookies</button>
+        <span id="consent-status" style="margin-left:12px;font-weight:bold"></span>
+      </div>
+
+      <div id="cookies-list" style="margin-top:12px"></div>
+
+      <p>
+        <button id="borrar-todas">Borrar todas las cookies</button>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Lucía Vidal Ortiz &amp; Miriam Mendiola Soriano</p>
+    <p>&copy; 2025 Pisos & Inmuebles</p>
+  </footer>
+  <p><a href="politica_cookies.html">Política de cookies</a></p>
+
+  <script src="estilos_cookies.js"></script>
+
+  <script>
+    // Helpers para cookies (usar window._ec si está disponible)
+    const cookieAPI = (function () {
+      if (window._ec && window._ec.getCookie && window._ec.setCookie && window._ec.deleteCookie) {
+        return {
+          get: window._ec.getCookie,
+          set: window._ec.setCookie,
+          del: window._ec.deleteCookie
+        };
+      }
+      return {
+        get: function (n) {
+          const m = document.cookie.split('; ').find(r => r.startsWith(n + '='));
+          return m ? decodeURIComponent(m.split('=')[1]) : null;
+        },
+        set: function (n, v, d) {
+          let c = n + '=' + encodeURIComponent(v) + '; path=/';
+          if (d && Number(d) > 0) {
+            const dd = new Date(); dd.setTime(dd.getTime() + d * 24 * 60 * 60 * 1000);
+            c += '; expires=' + dd.toUTCString();
+          }
+          document.cookie = c;
+        },
+        del: function (n) { document.cookie = n + '=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'; }
+      };
+    })();
+
+    function parseCookies() {
+      if (!document.cookie || document.cookie === '') return [];
+      return document.cookie.split('; ').map(function (pair) {
+        const idx = pair.indexOf('=');
+        const name = pair.substring(0, idx);
+        const value = pair.substring(idx + 1);
+        return { name: name, value: decodeURIComponent(value) };
+      });
+    }
+
+    function render() {
+      const list = parseCookies();
+      const container = document.getElementById('cookies-list');
+      container.innerHTML = '';
+      if (list.length === 0) {
+        container.textContent = 'No hay cookies disponibles.';
+        return;
+      }
+
+      const table = document.createElement('table');
+      table.className = 'cookie-table';
+      const thead = document.createElement('thead');
+      thead.innerHTML = '<tr><th>Nombre</th><th>Valor</th><th>Tipo</th><th>Acción</th></tr>';
+      table.appendChild(thead);
+      const tbody = document.createElement('tbody');
+
+      list.forEach(function (c) {
+        const tr = document.createElement('tr');
+        const tdName = document.createElement('td'); tdName.textContent = c.name;
+        const tdValue = document.createElement('td'); tdValue.textContent = c.value;
+        const tdType = document.createElement('td');
+        if (c.name === 'consent') tdType.textContent = 'Consentimiento';
+        else if (c.name === 'estilo' || c.name === 'estilo_href') tdType.textContent = 'Preferencia';
+        else tdType.textContent = 'Otra';
+
+        const tdAction = document.createElement('td');
+        const btn = document.createElement('button');
+        btn.textContent = 'Borrar';
+        btn.addEventListener('click', function () {
+          cookieAPI.del(c.name);
+          showMessage('Cookie "' + c.name + '" borrada.');
+          render();
+        });
+
+        tdAction.appendChild(btn);
+        tr.appendChild(tdName);
+        tr.appendChild(tdValue);
+        tr.appendChild(tdType);
+        tr.appendChild(tdAction);
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+      container.appendChild(table);
+
+      // actualizar estado de consentimiento
+      const cs = cookieAPI.get('consent');
+      document.getElementById('consent-status').textContent = cs ? ('Consentimiento: ' + cs) : 'Consentimiento: no establecido';
+    }
+
+    function showMessage(msg) {
+      const el = document.createElement('div');
+      el.textContent = msg;
+      el.style.position = 'fixed';
+      el.style.right = '12px';
+      el.style.top = '12px';
+      el.style.background = '#333';
+      el.style.color = '#fff';
+      el.style.padding = '8px 12px';
+      el.style.borderRadius = '4px';
+      el.style.zIndex = 10000;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 3500);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      render();
+      document.getElementById('borrar-todas').addEventListener('click', function () {
+        const list = parseCookies();
+        list.forEach(function (c) { cookieAPI.del(c.name); });
+        showMessage('Todas las cookies han sido borradas.');
+        render();
+      });
+
+      document.getElementById('btn-accept').addEventListener('click', function () {
+        cookieAPI.set('consent', 'accepted', 90);
+        // si hay estilo seleccionado, guardarlo también si es posible
+        const sel = document.getElementById('selector-estilos');
+        if (sel && sel.value) {
+          cookieAPI.set('estilo', sel.value, 45);
+          // intentar obtener href
+          const match = Array.from(document.querySelectorAll('link[rel*="stylesheet"]')).find(l => l.title && l.title === sel.value);
+          if (match && match.href) cookieAPI.set('estilo_href', match.href, 45);
+        }
+        showMessage('Cookies aceptadas.');
+        render();
+      });
+
+      document.getElementById('btn-reject').addEventListener('click', function () {
+        cookieAPI.set('consent', 'rejected', 90);
+        cookieAPI.del('estilo');
+        cookieAPI.del('estilo_href');
+        showMessage('Cookies rechazadas.');
+        render();
+      });
+    });
+  </script>
+
+</body>
+
+</html>

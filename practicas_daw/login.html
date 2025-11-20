@@ -48,12 +48,14 @@
       <fieldset>
         <legend>Iniciar sesión</legend>
 
-        <form action="index.html" method="post">
+        <form id="form-login" action="index.html" method="post" novalidate>
           <label for="usuario">Usuario</label><br>
-          <input type="text" id="usuario" name="usuario" required><br><br>
+          <input type="text" id="usuario" name="usuario"><br><br>
 
           <label for="password">Contraseña</label><br>
-          <input type="password" id="password" name="password" required><br><br>
+          <input type="password" id="password" name="password"><br><br>
+
+          <label><input type="checkbox" id="recordar" name="recordar"> Recordarme</label><br><br>
 
           <button type="submit" class="button">Acceder</button>
           <a href="signup.html" class="enlaces">Crear cuenta</a>
@@ -68,7 +70,11 @@
   <footer>
     <p>Lucía Vidal Ortiz & Miriam Mendiola Soriano</p>
     <p>&copy; 2025 Pisos & Inmuebles</p>
+    <p><a href="politica_cookies.html">Política de cookies</a></p>
   </footer>
+
+  <script src="login.js"></script>
+  <script src="estilos_cookies.js"></script>
 
 </body>
 
