@@ -1,30 +1,24 @@
+// Variante estricta: a diferencia de login.js, aquí NO se eliminan espacios/tabulaciones.
+// Si el usuario o la contraseña contienen cualquier whitespace (espacio, tab, salto de línea), se bloquea el acceso.
+// No enlazado en ninguna página: archivo opcional para tener ambas opciones.
+
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('form-login');
   if (!form) return;
 
-  // Sanitizar en tiempo real: eliminar espacios y tabulaciones
-  ['usuario', 'password'].forEach(function (id) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener('input', function () {
-      const limpio = el.value.replace(/[\t ]+/g, '');
-      if (el.value !== limpio) el.value = limpio;
-    });
-  });
-
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    const usuario = document.getElementById('usuario').value.trim();
-    const password = document.getElementById('password').value.trim();
-    const recordar = document.getElementById('recordar').checked;
+    const usuario = document.getElementById('usuario').value; // no se sanitiza
+    const password = document.getElementById('password').value; // no se sanitiza
+    const recordar = document.getElementById('recordar') ? document.getElementById('recordar').checked : false;
 
     const errores = [];
 
-    // Bloquear cualquier espacio o tab (aunque ya se sanitiza, se verifica)
-    if (/\s/.test(usuario)) errores.push('El usuario no puede contener espacios ni tabulaciones.');
-    if (/\s/.test(password)) errores.push('La contraseña no puede contener espacios ni tabulaciones.');
+    // Rechazar si hay cualquier whitespace
+    if (/\s/.test(usuario)) errores.push('El usuario contiene espacios o tabulaciones: no permitido.');
+    if (/\s/.test(password)) errores.push('La contraseña contiene espacios o tabulaciones: no permitido.');
 
-    // Validación del usuario (JS): empieza por letra, 3-15 caracteres solo letras y números
+    // Validación del usuario: empieza por letra, 3-15, solo letras y números
     const regUsuario = /^[A-Za-z][A-Za-z0-9]{2,14}$/;
     if (!regUsuario.test(usuario)) {
       errores.push('El usuario debe empezar por letra y tener entre 3 y 15 caracteres (solo letras y números).');
