@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const errores = [];
 
-    // Validar usuario: empezar por letra, 3-15 caracteres, solo letras y números
+    // Validación del usuario (JS): empieza por letra, 3-15 caracteres
+    // solo letras y números
     const regUsuario = /^[A-Za-z][A-Za-z0-9]{2,14}$/;
     if (!regUsuario.test(usuario)) {
       errores.push('El usuario debe empezar por letra y tener entre 3 y 15 caracteres (letras y números).');
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Guardar cookies: 'usuario', 'logueado' y 'ultima_visita'
-    // Si el usuario marca 'recordar', la cookie expirará en 30 días, si no será de sesión (sin expires).
+    // Si el usuario marca 'recordar', la cookie expirará en 30 días; si no, será de sesión.
     setCookie('usuario', encodeURIComponent(usuario), recordar ? 30 : null);
     setCookie('logueado', 'true', recordar ? 30 : null);
     setCookie('ultima_visita', new Date().toISOString(), recordar ? 30 : null);
@@ -52,11 +53,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Helpers expuestos para uso en otras páginas
+  // Obtener cookie por nombre (decodificada)
   window.getCookie = function (name) {
     const match = document.cookie.split('; ').find(row => row.startsWith(name + '='));
     return match ? decodeURIComponent(match.split('=')[1]) : null;
   };
 
+  // Borrar cookie (fecha pasada)
   window.deleteCookie = function (name) {
     document.cookie = name + '=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
   };

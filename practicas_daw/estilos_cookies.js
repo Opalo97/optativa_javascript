@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Helpers de cookies
+  // Helpers de cookies: set/get/delete
   function setCookie(name, value, days) {
     let cookie = name + '=' + encodeURIComponent(value) + '; path=/';
     if (days && Number(days) > 0) {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // debug: listar títulos detectados
   console.debug('[estilos_cookies] estilos detectados:', links.map(l => l.title));
 
-  // Crear selector y añadir al header si hay más de 1 estilo
+  // Crear selector y añadir al header si hay estilos alternativos
   if (links.length > 0) {
     // determinar título por defecto (preferir 'Modo Claro')
     let defaultTitle = null;
@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
       select.value = defaultTitle;
     }
 
+    // Al cambiar selector: aplicar y, si hay consentimiento, persistir 45 días
     select.addEventListener('change', function () {
       const chosen = String(select.value).trim();
       applyStyle(chosen);
@@ -127,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Recoger todas las hojas de estilo relevantes (no media=print)
     const allLinks = Array.from(document.querySelectorAll('link[rel*="stylesheet"]')).filter(l => (l.getAttribute('media') || 'screen') !== 'print');
 
-    // Desactivar sólo las hojas que tienen 'title' (alternativas); las que no tienen title son 'predeterminadas' y se mantienen activas
+    // Desactivar sólo las hojas que tienen 'title' (alternativas); las sin title son predeterminadas
     allLinks.forEach(l => {
       try {
         if (l.title && l.title.length > 0) {
@@ -137,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } catch (e) {}
     });
 
-    // Intentar activar por title primero (entre las alternativas y las predeterminadas con title)
+    // Intentar activar por title primero
     for (const link of allLinks) {
       try {
         if (link.title && String(link.title).trim().toLowerCase() === wanted) {
@@ -196,6 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function injectStyleLink(title, href) {
+    // Inyectar link rel=stylesheet en head con title para que otros scripts puedan detectarlo
     try {
       const head = document.getElementsByTagName('head')[0] || document.documentElement;
       const link = document.createElement('link');
@@ -235,6 +237,7 @@ document.addEventListener('DOMContentLoaded', function () {
     showCookieBanner();
   }
 
+  // Mostrar banner de consentimiento al cargar si no existe 'consent'
   function showCookieBanner() {
     const banner = document.createElement('div');
     banner.id = 'cookie-banner';
@@ -267,6 +270,7 @@ document.addEventListener('DOMContentLoaded', function () {
     banner.appendChild(actions);
     document.body.appendChild(banner);
 
+    // Usuario acepta: guardar consent 90d y persistir estilo actual (45d)
     btnAccept.addEventListener('click', function () {
       setCookie('consent', 'accepted', 90);
       // si hay un estilo seleccionado actualmente, guardar persistente 45 días
@@ -284,6 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
       banner.remove();
     });
 
+    // Usuario rechaza: guardar consent 90d y eliminar preferencias de estilo
     btnReject.addEventListener('click', function () {
       setCookie('consent', 'rejected', 90);
       // eliminar cookie de estilo para no persistir
